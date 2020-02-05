@@ -2,16 +2,15 @@ import React from 'react';
 import Task from './Task'
 import {Droppable} from 'react-beautiful-dnd'
 const Column = (props) => {
-    console.log(props)
     const {column, tasks} = props
     return (
         <div>
             {column.title}
             <Droppable droppableId ={column.id}>
                 {(provided) => (
-                <div ref = {provided.innerRef} {...provided.droppableProps}>
+                <div ref = {provided.innerRef}  {...provided.droppableProps}>
 
-                    {tasks.map((task,id) => {return <Task task = {task} index = {id} key = {id}/>})}
+                    {tasks.map((task,index) => {return <Task task = {task} index = {index} key = {index} />})}
                     {provided.placeholder}
                 </div>)
                 }
