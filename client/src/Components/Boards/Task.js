@@ -5,7 +5,7 @@ const Task = (props) => {
     return (
         <Draggable draggableId = {task.id} index = {index} key = {task.id}>
             {(provided) => (
-                <div {...provided.dragHandleProps} {...provided.draggableProps} ref = {provided.innerRef}>
+                <div className = "task" {...provided.dragHandleProps} {...provided.draggableProps} ref = {provided.innerRef}>
                     {task.content}
                 </div>
             ) }

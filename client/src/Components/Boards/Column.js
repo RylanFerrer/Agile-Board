@@ -1,12 +1,15 @@
 import React from 'react';
 import Task from './Task'
-import {Droppable} from 'react-beautiful-dnd'
+import {Droppable,Draggable} from 'react-beautiful-dnd'
 const Column = (props) => {
-    const {column, tasks} = props
+    const {column, tasks,index} = props
     return (
-        <div>
-            {column.title}
-            <Droppable droppableId ={column.id}>
+        <Draggable draggableId = {column.id} index = {index}>
+        {(provided) => (
+        <div className = "column"  ref = {provided.innerRef}  {...provided.draggableProps}>
+            <h3 {...provided.dragHandleProps}>{column.title.toUpperCase()}</h3>
+          
+            <Droppable droppableId ={column.id} type = "task">
                 {(provided) => (
                 <div ref = {provided.innerRef}  {...provided.droppableProps}>
 
@@ -16,6 +19,8 @@ const Column = (props) => {
                 }
             </Droppable>
         </div>
+         )}
+        </Draggable>
     );
 }
 
