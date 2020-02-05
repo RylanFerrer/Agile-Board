@@ -4,9 +4,6 @@ export const onDragEnd = (result,data,setData) => {
     {
         return
     }
-    if(destination.draggableId === source.draggableId && destination.index === source.index) {
-        return
-    } 
     if (type === "column") {
         const newColumnOrder = Array.from(data.columnOrder)
         newColumnOrder.splice(source.index, 1)

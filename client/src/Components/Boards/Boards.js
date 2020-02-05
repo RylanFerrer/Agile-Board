@@ -6,7 +6,6 @@ import Column from './Column';
 const Boards = () => {
     const [data, setData] = useState({...initialData});
     return (
-      
             <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData)}>
                 <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
                     {(provided) => (
@@ -21,7 +20,6 @@ const Boards = () => {
                     )}   
                 </Droppable>
             </DragDropContext>
-        
     );
 }
 

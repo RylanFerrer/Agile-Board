@@ -7,11 +7,11 @@ const Column = (props) => {
         <Draggable draggableId = {column.id} index = {index}>
         {(provided) => (
         <div className = "column"  ref = {provided.innerRef}  {...provided.draggableProps}>
-            <h3 {...provided.dragHandleProps}>{column.title.toUpperCase()}</h3>
+            <h3  className = "column__text"{...provided.dragHandleProps}>{column.title.toUpperCase()}</h3>
           
             <Droppable droppableId ={column.id} type = "task">
                 {(provided) => (
-                <div ref = {provided.innerRef}  {...provided.droppableProps}>
+                <div className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
 
                     {tasks.map((task,index) => {return <Task task = {task} index = {index} key = {index} />})}
                     {provided.placeholder}

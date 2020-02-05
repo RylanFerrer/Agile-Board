@@ -1,6 +1,6 @@
 .task {
     background-color: $taskCard;
-    width: 200px;
+    width: 300px;
     height: 80px;
     border-radius: 4px;
     color: $offWhite;
@@ -9,4 +9,12 @@
     justify-content: center;
     align-items: center;
     margin: 15px 0;
+    &__container {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 320px;
+        height: 500px;
+    }
 }
