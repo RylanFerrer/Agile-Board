@@ -6,4 +6,4 @@ const ProjectSchema = {
     columnOrder: Array
 }
 
-module.exports = mongoose.model("ProjectSchema",ProjectSchema)
+module.exports = mongoose.model("Project",ProjectSchema)
