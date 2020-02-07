@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react';
-import initialData from '../Data/initial-data'
 import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd} from "./Helpers/boardHelpers"
@@ -17,8 +16,7 @@ const Boards = () => {
             console.log(e)
         }
     }, [])
-    if(data !== undefined) {
-    return (
+    return data ? (
             <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData)}>
                 <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
                     {(provided) => (
@@ -33,8 +31,7 @@ const Boards = () => {
                     )}   
                 </Droppable>
             </DragDropContext>
-    );
-}  else {return(<h1>Loading</h1>) }
+    ): (<h1>Loading</h1>);
 }
 
 export default Boards;
