@@ -1,11 +1,22 @@
-import React, {useState} from 'react';
-import initialData from '../Data/initial-data'
+import React, {useState,useEffect} from 'react';
+import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd} from "./Helpers/boardHelpers"
 import Column from './Column';
 const Boards = () => {
-    const [data, setData] = useState({...initialData});
-    return (
+    const [data, setData] = useState(undefined);
+    useEffect(() => {
+        const fetchData = async() => {
+            const response = await axios.get("/api/projects")
+            setData(response.data)
+        }
+        try {
+        fetchData()
+        } catch(e) {
+            console.log(e)
+        }
+    }, [])
+    return data ? (
             <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData)}>
                 <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
                     {(provided) => (
@@ -20,7 +31,7 @@ const Boards = () => {
                     )}   
                 </Droppable>
             </DragDropContext>
-    );
+    ): (<h1>Loading</h1>);
 }
 
 export default Boards;
