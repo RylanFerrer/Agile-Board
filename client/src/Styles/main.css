@@ -32,8 +32,34 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-bottom: 15px;
   width: 260px;
+  border-radius: 8px;
+}
+
+.task__add-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.task__add-cont:hover {
+  border-radius: 4px;
+  background-color: #e0e0e0;
+}
+
+.task__add-container {
+  padding-left: 19px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  width: 100%;
 }
 
 .column {
@@ -49,7 +75,7 @@
   display: -ms-flexbox;
   display: flex;
   margin: 0 5%;
-  height: 150px;
+  height: 80px;
   max-height: 95vh;
 }
 

@@ -16,7 +16,30 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding-bottom: 15px;
         width: 260px;
+        border-radius: 8px;
+    }
+    &__add {
+        &-cont {
+            &:hover {
+                border-radius: 4px;
+                background-color:  rgb(224, 224, 224);
+            }
+            display: flex;
+            align-items: center;
+            width: 80%;
+            height: 30px;
+            margin-top: 5px;
+           
+        }
+        &-container {
+            padding-left: 19px;
+            padding-bottom: 20px;
+            font-size: 14px;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            width: 100%;
+         
+        }
     }
 }
