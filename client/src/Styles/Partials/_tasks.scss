@@ -1,20 +1,45 @@
 .task {
-    background-color: $taskCard;
-    width: 300px;
-    height: 80px;
+    background-color: white;
+    width: 240px;
+    min-height: 20px;
     border-radius: 4px;
-    color: $offWhite;
-    font-size: 20px;
+    padding: 1.2%;
+    color: black;
+    font-size: 14px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin: 15px 0;
+    box-shadow: $boxShadow;
+    margin: 5px 0;
     &__container {
-        background-color: white;
+        background-color: #EBECF0;
         display: flex;
         align-items: center;
         flex-direction: column;
-        width: 320px;
-        height: 500px;
+        width: 260px;
+        border-radius: 8px;
+    }
+    &__add {
+        &-cont {
+            &:hover {
+                border-radius: 4px;
+                background-color:  rgb(224, 224, 224);
+            }
+            display: flex;
+            align-items: center;
+            width: 80%;
+            height: 30px;
+            margin-top: 5px;
+           
+        }
+        &-container {
+            padding-left: 19px;
+            padding-bottom: 20px;
+            font-size: 14px;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            width: 100%;
+         
+        }
     }
 }

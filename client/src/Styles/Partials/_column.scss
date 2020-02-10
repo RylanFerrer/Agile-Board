@@ -1,10 +1,13 @@
 .column {
-    margin:0 5%;
-    background-color: white;
+    margin:0 2%;
+    background-color: #EBECF0;
     box-shadow: $boxShadow;
+    border-radius: 8px;
     &__container {
         display: flex;
         margin: 0 5%;
+        height: 80px;
+        max-height: 95vh;
     }
     &__text {
         text-align: center;

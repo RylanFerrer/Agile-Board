@@ -1,4 +1,6 @@
-export const onDragEnd = (result,data,setData) => {
+import axios from 'axios'
+import uuid from 'uuid'
+export const onDragEnd = async(result,data,setData, projectId) => {
     const {destination,source,draggableId,type} = result
     if(!destination)
     {
@@ -13,6 +15,8 @@ export const onDragEnd = (result,data,setData) => {
             ...data, 
             columnOrder: newColumnOrder
         }
+
+        updateBoard(newData, projectId)
         setData(newData)
         return;
     }
@@ -34,7 +38,8 @@ export const onDragEnd = (result,data,setData) => {
             ...data.columns,
             [newColumn.id]:newColumn
             }
-        }   
+        } 
+        updateBoard(newData, projectId)
         setData(newData)
         return;
     }
@@ -59,6 +64,27 @@ export const onDragEnd = (result,data,setData) => {
             [newFinish.id]: newFinish, 
         }
     }
+    updateBoard(newData, projectId)
     setData(newData)
     return;
 }
+export const saveItems = async(column, item, projectId) => {
+    const id = uuid.v4();
+    const newItem = 
+        {
+            id: id,
+            item: item
+        }
+    
+    await axios.put(`/api/projects/addItem/${projectId}`, {item: newItem, column: column})
+
+}
+const updateBoard = async(newData, projectId) => {
+    await axios.put(`/api/projects/${projectId}`, {data: newData})
+    return
+} 
+export const resetBoard = async(setData) => {
+    const response = await axios.get('/api/projects')
+    setData(response.data)
+    return
+} 

@@ -1,8 +1,9 @@
 import React from 'react';
 import Task from './Task'
+import AddItem from './AddItem'
 import {Droppable,Draggable} from 'react-beautiful-dnd'
 const Column = (props) => {
-    const {column, tasks,index} = props
+    const {column, tasks,index, projectId, reset} = props
     return (
         <Draggable draggableId = {column.id} index = {index}>
         {(provided) => (
@@ -11,13 +12,16 @@ const Column = (props) => {
           
             <Droppable droppableId ={column.id} type = "task">
                 {(provided) => (
-                <div className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
+                <div  className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
 
                     {tasks.map((task,index) => {return <Task task = {task} index = {index} key = {index} />})}
                     {provided.placeholder}
+                    <AddItem reset=  {reset} projectId = {projectId} column = {column} className = "task"/>
+                    
                 </div>)
                 }
             </Droppable>
+  
         </div>
          )}
         </Draggable>

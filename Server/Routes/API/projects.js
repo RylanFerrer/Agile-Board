@@ -5,12 +5,43 @@ const router = express.Router();
 
 router.get('/', async(req,res) => {
     try {
-        const proj = await Project.findOne({_id: "5e3b66006b853e13f8515055"})
+        const proj = await Project.findOne({})
         res.send(proj)
     } catch (e) {
+        console.log(e)
         res.sendStatus(400)
     }
  
+})
+router.put('/:projectId',async(req,res) => {
+    const {projectId} = req.params;
+    const {data} = req.body;
+    const query = {_id: projectId}
+    try {
+        await Project.updateOne(query, data)
+        res.sendStatus(200)
+    } catch(e) {
+        console.log(e)
+        res.sendStatus(400)
+    }
+})
+router.put('/addItem/:projectId', async(req,res) => {
+    const {projectId} = req.params
+    const {item,column} = req.body
+    const query = {_id: projectId}
+    try {
+        const currentProject = await Project.findOne(query)
+        const currentColumn = currentProject.columns[column.id]
+        const newTask = {...currentProject.tasks, [item.id]: {id: item.id, content: item.item}}
+        currentProject.tasks = newTask
+        currentColumn.taskIds.push(item.id)
+        currentProject.columns[column.id] = currentColumn
+        await Project.updateOne(query, currentProject)
+        res.sendStatus(200)
+    } catch (e) {
+        console.log(e)
+        res.sendStatus(400)
+    }
 })
 router.get("/test", async(req,res) => {
     try {
