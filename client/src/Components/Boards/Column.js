@@ -11,7 +11,7 @@ const Column = (props) => {
           
             <Droppable droppableId ={column.id} type = "task">
                 {(provided) => (
-                <div className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
+                <div  className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
 
                     {tasks.map((task,index) => {return <Task task = {task} index = {index} key = {index} />})}
                     {provided.placeholder}
