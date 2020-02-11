@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .task {
   background-color: white;
   width: 240px;
@@ -36,6 +37,22 @@
   border-radius: 8px;
 }
 
+.task__add-button {
+  border: none;
+  background-color: #86A5D9;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 30px;
+  padding: 5px;
+  width: 80px;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.task__add-button:hover {
+  background-color: #9cbcf3;
+}
+
 .task__add-cont {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,6 +68,13 @@
 .task__add-cont:hover {
   border-radius: 4px;
   background-color: #e0e0e0;
+}
+
+.task__add-textarea {
+  margin-top: 10px;
+  display: block;
+  margin-bottom: 15px;
+  width: 240px;
 }
 
 .task__add-container {
@@ -83,9 +107,11 @@
   text-align: center;
   padding-bottom: 4%;
   border-bottom: 0.5px solid black;
+  margin-bottom: 0;
 }
 
 body {
   background-color: #f9f9f9;
+  font-family: 'Roboto', sans-serif;
 }
 /*# sourceMappingURL=main.css.map */

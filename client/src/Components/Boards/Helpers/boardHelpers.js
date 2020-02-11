@@ -68,8 +68,10 @@ export const onDragEnd = async(result,data,setData, projectId) => {
     setData(newData)
     return;
 }
-export const saveItems = async(column, item, projectId) => {
+export const saveItems = async(column, item, projectId,list) => {
     const id = uuid.v4();
+    if(!list)
+    {
     const newItem = 
         {
             id: id,
@@ -77,6 +79,13 @@ export const saveItems = async(column, item, projectId) => {
         }
     
     await axios.put(`/api/projects/addItem/${projectId}`, {item: newItem, column: column})
+    } else {
+        const newList = {
+                id: id,
+                title: item
+        }
+        await axios.put(`/api/projects/addList/${projectId}`, newList)
+    }
 
 }
 const updateBoard = async(newData, projectId) => {

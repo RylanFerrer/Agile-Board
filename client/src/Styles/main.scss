@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import "./Partials/variables";
 @import "./Partials/tasks";
 @import "./Partials/column";
 body {
     background-color: $offWhite;
+    font-family: 'Roboto', sans-serif;
 }

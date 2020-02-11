@@ -5,25 +5,40 @@ import {saveItems} from "./Helpers/boardHelpers"
 const AddItem = (props) => {
     const [isOpened, setIsOpened] = useState(false)
     const [text, setText] = useState('')
-    const {type, column, projectId, reset} = props
-    const placeHolder = type === 'list' ? "Add a new list" : "Add a new task"
-    const add = async(column, text, projectId) => {
-        setIsOpened(!isOpened)
-        await saveItems(column, text,projectId)
-        await reset()
+    const {column, projectId, reset,list} = props
+    const placeHolder = list ? "Add a new list" : "Add a new task"
+    const listStyles = list ? {
+        width: '260px',
+        backgroundColor: 'rgba(0,0,0,0.1)',
+        paddingBottom: "20px",
+        borderRadius: '8px',
+        height: '20px'
+    } : {}
+    const textStyles = list ? {height: "100px",   backgroundColor: 'rgba(0,0,0,0.1)', width: '260px', borderRadius: "8px"} : {}
+    const add = async(column, text, projectId,list) => {
+        if (text !== '')
+        {
+            setIsOpened(!isOpened)
+            await saveItems(column, text,projectId, list)
+            await reset()
+        } else {
+            setIsOpened(!isOpened)
+        }
     }
-    return  !isOpened ? (
-        <div className = "task__add-container">
+
+    return !isOpened ?  (
+        <div  style = {listStyles} className = "task__add-container">
             <div onClick = {() => setIsOpened(true)} className = "task__add-cont">
                 <AddIcon className = "task__add"/>
                 <p>{placeHolder}</p>
             </div>
 
         </div>
-    ): (
-    <div className = "task__add-container">
-         <TextArea onChange = {event => setText(event.target.value)}/>
-         <button onClick = {() => add(column,text,projectId )}>Save</button>
+    ): 
+     (
+    <div style = {textStyles}className = "task__add-container task__add-text-container">
+         <TextArea minRows={3} maxRows={6}  className = "task__add-textarea" onChange = {event => setText(event.target.value)}/>
+         <button className = "task__add-button" onClick = {() => add(column,text,projectId,list )}>Save</button>
     </div>
    
     );

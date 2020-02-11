@@ -20,6 +20,20 @@
         border-radius: 8px;
     }
     &__add {
+        &-button {
+            border: none;
+            background-color: #86A5D9;
+            font-weight: bold;
+            text-transform: uppercase;
+            height: 30px;
+            padding: 5px;
+            width: 80px;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            &:hover {
+                background-color: rgb(156, 188, 243);
+            }
+        }
         &-cont {
             &:hover {
                 border-radius: 4px;
@@ -31,6 +45,12 @@
             height: 30px;
             margin-top: 5px;
            
+        }
+        &-textarea {
+            margin-top: 10px;
+            display: block;
+            margin-bottom: 15px;
+            width: 240px;
         }
         &-container {
             padding-left: 19px;

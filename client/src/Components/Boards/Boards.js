@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
+import Additem from "./AddItem"
 import Column from './Column';
 const Boards = () => {
     const [data, setData] = useState(null);
@@ -20,6 +21,7 @@ const Boards = () => {
         }
     }, [])
         return data  ? (
+            <>
                 <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData, projectId)}>
                     <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
                         {(provided) => (
@@ -29,13 +31,16 @@ const Boards = () => {
                             const tasks = column.taskIds.map((taskId) => { return data.tasks[taskId]})
                             return <Column  reset = {() => resetBoard(setData)}projectId = {projectId} key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
                             })}
+                              <Additem list projectId = {projectId} reset = {() => resetBoard(setData)}/>
                         {provided.placeholder}
                         </div>
                         )}   
                     </Droppable>
                 </DragDropContext>
+              
+            </>
                 )  : <h1>Loading</h1>;
-        
+                            
 }
 
 export default Boards;
