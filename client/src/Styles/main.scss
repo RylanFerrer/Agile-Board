@@ -5,4 +5,11 @@
 body {
     background-color: $offWhite;
     font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+.flex-container {
+    display: flex;
+}
+.test {
+    display: none;
 }

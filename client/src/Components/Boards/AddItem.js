@@ -8,13 +8,15 @@ const AddItem = (props) => {
     const {column, projectId, reset,list} = props
     const placeHolder = list ? "Add a new list" : "Add a new task"
     const listStyles = list ? {
+        marginLeft: '40px',
+        marginTop: "18px",
         width: '260px',
         backgroundColor: 'rgba(0,0,0,0.1)',
         paddingBottom: "20px",
         borderRadius: '8px',
         height: '20px'
     } : {}
-    const textStyles = list ? {height: "100px",   backgroundColor: 'rgba(0,0,0,0.1)', width: '260px', borderRadius: "8px"} : {}
+    const textStyles = list ? {height: "100px",   backgroundColor: 'rgba(0,0,0,0.1)', marginTop: "18px",width: '260px', borderRadius: "8px"} : {}
     const add = async(column, text, projectId,list) => {
         if (text !== '')
         {
