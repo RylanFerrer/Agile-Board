@@ -1,18 +1,26 @@
 .column {
-    margin:0 2%;
+    margin:1% 2%;
     background-color: #EBECF0;
     box-shadow: $boxShadow;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0 ;
+    height: 50px;
     &__container {
         display: flex;
-        margin: 0 5%;
-        height: 80px;
-        max-height: 95vh;
+        overflow-x: auto;
+        width: 100%; 
+        height: 91.3vh;
+        > * {
+          flex: 0 0 auto; // 'rigid' lists
+          margin-left: $gap;
+        }
+        &::after {
+          content: '';
+          flex: 0 0 $gap;
+        }
     }
     &__text {
         text-align: center;
-        padding-bottom: 4%;
-        border-bottom: 0.5px solid black;
+        margin-bottom: 0;
 
     }
 }

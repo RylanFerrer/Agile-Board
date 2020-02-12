@@ -43,6 +43,27 @@ router.put('/addItem/:projectId', async(req,res) => {
         res.sendStatus(400)
     }
 })
+router.put('/addList/:projectId', async(req,res) => {
+    const {projectId} = req.params;
+    const {title, id} =req.body
+    const query = {_id: projectId}
+    try {
+    const currentProject = await Project.findOne(query)
+    const newColumnData = {
+        ...currentProject.columns, [id]: {id: id, title: title, taskIds: []}
+    }
+    currentProject.columnOrder.push(id)
+    currentProject.columns = newColumnData
+    await Project.updateOne(query, currentProject) 
+    console.log('success')
+    res.sendStatus(200)
+    } catch(e) {
+        console.log(e)
+        res.sendStatus(400)
+    }
+
+ 
+})
 router.get("/test", async(req,res) => {
     try {
   const newProject =  new Project({

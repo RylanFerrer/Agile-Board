@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
+import Additem from "./AddItem"
 import Column from './Column';
 const Boards = () => {
     const [data, setData] = useState(null);
@@ -20,22 +21,28 @@ const Boards = () => {
         }
     }, [])
         return data  ? (
+            <>
+                <div className = "flex-container">
                 <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData, projectId)}>
                     <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
-                        {(provided) => (
-                        <div className = "column__container"  ref = {provided.innerRef}{...provided.droppableProps}>
+                        {(provided, snapshot) => (
+                        <div className = "column__container"  isDragging = {snapshot.isDragging}ref = {provided.innerRef}{...provided.droppableProps}>
                             {data.columnOrder.map((columnId,index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map((taskId) => { return data.tasks[taskId]})
                             return <Column  reset = {() => resetBoard(setData)}projectId = {projectId} key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
                             })}
+                           <Additem list projectId = {projectId} reset = {() => resetBoard(setData)}/>
                         {provided.placeholder}
                         </div>
-                        )}   
+                
+                        )}
+                            
                     </Droppable>
                 </DragDropContext>
-                )  : <h1>Loading</h1>;
-        
+                </div>
+            </>)  : <h1>Loading</h1>;
+                            
 }
 
 export default Boards;
