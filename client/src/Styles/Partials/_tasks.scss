@@ -1,17 +1,35 @@
 .task {
     background-color: white;
-    width: 240px;
-    min-height: 20px;
     white-space: pre-wrap;
     border-radius: 4px;
-    padding: 1.2%;
+    padding: 1%;
+    min-height: 32px;
     color: black;
     font-size: 14px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     box-shadow: $boxShadow;
-    margin: 5px 0;
+    &__overlay {
+        &:hover {
+            background-color: rgba(228, 228, 228, 0.3);
+            opacity: 1;
+     
+        }
+        &-container {
+            margin: 5px 0;
+            position: relative;
+            width: 90%;
+        }
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        opacity: 0;
+   
+    }
     &__container {
         background-color: #EBECF0;
         display: flex;
@@ -19,6 +37,10 @@
         flex-direction: column;
         width: 260px;
         border-radius: 8px;
+         display: flex;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 80vh;
     }
     &__add {
         &-button {

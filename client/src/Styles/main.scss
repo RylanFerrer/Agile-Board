@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import "./Partials/variables";
+@import "./Partials/scrollbar";
 @import "./Partials/tasks";
 @import "./Partials/column";
+@import "./Partials/modal";
+html {
+    position: relative;
+}
 body {
     background-color: $offWhite;
     font-family: 'Roboto', sans-serif;

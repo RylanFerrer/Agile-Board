@@ -68,6 +68,17 @@ export const onDragEnd = async(result,data,setData, projectId) => {
     setData(newData)
     return;
 }
+export const editItem = async(id, projectId, newValue,setDisplay,setData) => {
+    console.log(projectId)
+    const data = {
+        itemId: id,
+        content: newValue
+    }
+        await axios.put(`/api/projects/editItem/${projectId}`,data )
+        resetBoard(setData)
+        setDisplay(false)
+
+}
 export const saveItems = async(column, item, projectId,list) => {
     const id = uuid.v4();
     if(!list)
