@@ -15,7 +15,6 @@ const Boards = () => {
     useEffect(() => {
         const fetchData = async() => {
             const response = await axios.get("/api/projects")
-            console.log(response)
             setData(response.data)
             setProjectId(response.data._id)
         }
@@ -26,7 +25,6 @@ const Boards = () => {
         }
     }, [])
     const setModal = (content) => {
-        console.log(content)
         setVal(content)
         setTextModalDisplay(!textModalDisplay)
     }

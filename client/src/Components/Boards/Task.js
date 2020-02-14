@@ -12,7 +12,7 @@ const Task = (props) => {
                         {task.content}
                     </div>
                     <div className = "task__overlay">
-                        <img  alt = "edit" onClick = {() => setModal(task) } src = {editButton}/> 
+                        <img  className = "task__overlay-img" alt = "edit" onClick = {() => setModal(task) } src = {editButton}/> 
                     </div>
                 </div>
                

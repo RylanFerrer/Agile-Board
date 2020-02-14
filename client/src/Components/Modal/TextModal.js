@@ -1,18 +1,21 @@
-import React, {useState} from 'react'
-import TextArea from 'react-textarea-autosize'
+import React, {useRef} from 'react'
 import {editItem} from '../Boards/Helpers/boardHelpers'
+import ArchiveIcon from '@material-ui/icons/Archive';
 export default function TextModal(props) {
     const {val, textModal, projectId,setTextModalDisplay, reset} = props
-    console.log(projectId)
-    const [text, setText] = useState(val.content)
     const modalDisplay = textModal ? 'flex' : 'none'
+    const newRef = useRef()
     return (
         <div  style = {{display: modalDisplay}}className = "modal">
-                <div>
-                    <TextArea minRows={3} maxRows={6} onChange = {(event) => {setText(event.target.value)}} readOnly = {false} className = "task__add-textarea" placeholder = {val.content}/>
-                    <button onClick = {() => editItem(val.id, projectId, text, setTextModalDisplay,reset)}className = "task__add-button">Save</button>
+            <div className = "modal__content">
+                <div className = "modal__container">
+                        <textarea ref={newRef}  readOnly = {false} className = "modal__textarea" placeholder = {val.content}/>
+                        <button onClick = {() => editItem(val.id, projectId, setTextModalDisplay,reset,newRef)}className = "task__add-button">Save</button>
+                    </div>
+                    <div className = "modal__container-side">
+                        <span className  ="modal__container-side-archive"> <ArchiveIcon className = "archive"/> Archive</span>
+                    </div>
                 </div>
-      
         </div>
     )
 }
