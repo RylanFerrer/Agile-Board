@@ -1,6 +1,5 @@
 const express = require('express')
 const Project = require('../../Models/ProjectSchema')
-const mongoose = require('mongoose')
 const router = express.Router();
 
 router.get('/', async(req,res) => {
@@ -43,6 +42,43 @@ router.put('/addItem/:projectId', async(req,res) => {
         res.sendStatus(400)
     }
 })
+router.put("/editItem/:projectId", async(req,res) => {
+    const {projectId} = req.params;
+    const {itemId, content} = req.body
+    const query = {_id: projectId}
+    try {
+        const currentProject = await Project.findOne(query)
+        const changedItem  = currentProject.tasks[itemId]
+        changedItem.content = content
+        currentProject.tasks[itemId] = changedItem
+        await Project.updateOne(query, currentProject)
+        res.sendStatus(200)
+    } catch (e) {
+        res.sendStatus(400)
+    }
+})
+router.put('/removeItem/:projectId', async(req,res) => {
+    const {projectId} = req.params
+    const {itemId, column} = req.body
+    const query = {_id: projectId}
+    try {
+        currentProject = await Project.findOne(query)
+        delete currentProject.tasks[itemId]
+        const updatedColumn = currentProject.columns[column.id].taskIds.filter(task => task !== itemId)
+         currentProject.columns[column.id].taskIds = updatedColumn
+         await Project.updateOne(query, currentProject)
+        res.sendStatus(200)
+    } catch (e) {
+        console.log(e)
+        res.sendStatus(400)
+    }
+})
+router.delete('/removeList/:projectId', (req,res) => {
+    const {projectId} = req.params
+    const {id, column} = req.body
+    const query = {_id: projectId}
+
+})
 router.put('/addList/:projectId', async(req,res) => {
     const {projectId} = req.params;
     const {title, id} =req.body
@@ -68,31 +104,10 @@ router.get("/test", async(req,res) => {
     try {
   const newProject =  new Project({
     tasks: {
-        'task-1': {id:"task-1", content: 'Take out the garbage'},
-        'task-2': {id:"task-2", content: 'Watch TV'},
-        'task-3': {id:"task-3", content: 'Take dog on a walk'},
-        'task-4': {id:"task-4", content: 'Clean Bathroom'},
-        'task-5': {id:"task-5", content: 'Something'},
-        'task-6': {id:"task-6", content: 'Something'},
     },
     columns: {
-        'column-1': {
-            id: 'column-1',
-            title: "to-do",
-            taskIds: ["task-1", "task-2", "task-3", "task-4","task-5","task-6"]
-        },  
-        'column-2': {
-            id: 'column-2',
-            title: "In Progress",
-            taskIds: []
-        },
-        'column-3': {
-            id: 'column-3',
-            title: 'Completed',
-            taskIds:[]
-        }
     },
-    columnOrder: ['column-1', 'column-2', 'column-3']
+    columnOrder: []
   })
   await newProject.save()
   console.log("Success")
