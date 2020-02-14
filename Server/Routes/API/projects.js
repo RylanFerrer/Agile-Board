@@ -57,18 +57,16 @@ router.put("/editItem/:projectId", async(req,res) => {
         res.sendStatus(400)
     }
 })
-router.delete('/removeItem/:projectId', async(req,res) => {
+router.put('/removeItem/:projectId', async(req,res) => {
     const {projectId} = req.params
-    const {id, column} = req.body
+    const {itemId, column} = req.body
     const query = {_id: projectId}
-
     try {
         currentProject = await Project.findOne(query)
-        const newTasks = currentProject.tasks.filter(task => task.id !== id )
-        const updatedColumn = currentProject.columns[column.id].taskIds.filter(task => task !== id)
-        currentProject.tasks = newTasks
-        currentProject.columns[column.id].taskIds = updatedColumn
-        await Project.updateOne(query, currentProject)
+        delete currentProject.tasks[itemId]
+        const updatedColumn = currentProject.columns[column.id].taskIds.filter(task => task !== itemId)
+         currentProject.columns[column.id].taskIds = updatedColumn
+         await Project.updateOne(query, currentProject)
         res.sendStatus(200)
     } catch (e) {
         console.log(e)

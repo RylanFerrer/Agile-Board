@@ -68,6 +68,15 @@ export const onDragEnd = async(result,data,setData, projectId) => {
     setData(newData)
     return;
 }
+export const removeItem = async(id, projectId,column,setData,setDisplay) => {
+    const data = {
+        itemId: id,
+        column: column
+    }
+    await axios.put(`/api/projects/removeItem/${projectId}`, data)
+    resetBoard(setData)
+    setDisplay(false)
+}
 export const editItem = async(id, projectId,setDisplay,setData,ref) => {
     if(ref.current.value !== '')
     {

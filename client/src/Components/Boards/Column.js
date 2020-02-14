@@ -14,7 +14,7 @@ const Column = (props) => {
                 {(provided) => (
                 <div  className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>
 
-                    {tasks.map((task,index) => {return <Task  setModal = {setModal} task = {task} index = {index} key = {index} />})}
+                    {tasks.map((task,index) => {return <Task column = {column} setModal = {setModal} task = {task} index = {index} key = {index} />})}
                     {provided.placeholder}
                     <AddItem  reset=  {reset} projectId = {projectId} column = {column} className = "task"/>     
                 </div>)

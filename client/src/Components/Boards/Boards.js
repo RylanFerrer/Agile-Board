@@ -8,7 +8,7 @@ import Column from './Column';
 const Boards = () => {
     const [data, setData] = useState(null);
     const [projectId, setProjectId] =useState(null)
-    const [val,setVal] = useState('')
+    const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
 
    
@@ -24,8 +24,8 @@ const Boards = () => {
             console.log(e)
         }
     }, [])
-    const setModal = (content) => {
-        setVal(content)
+    const setModal = (content,column) => {
+        setVal({taskItem: content, column: column})
         setTextModalDisplay(!textModalDisplay)
     }
         return data  ? (
