@@ -5,12 +5,16 @@ import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
+import {useSelector} from 'react-redux'
+
+
 const Boards = () => {
     const [data, setData] = useState(null);
     const [projectId, setProjectId] =useState(null)
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
-
+    const counter = useSelector(state => state.isLoggedIn)
+console.log(counter)
    
     useEffect(() => {
         const fetchData = async() => {
