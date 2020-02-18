@@ -50,8 +50,7 @@ const Boards = () => {
                 </DragDropContext>
                 <TextModal reset = {setData} projectId = {projectId} setTextModalDisplay = {setTextModalDisplay} textModal = {textModalDisplay} val = {val}/>
                 </div>
-            </>)  : <h1>Loading</h1>;
-                            
+            </>)  : <h1>Loading</h1>;              
 }
 
 export default Boards;
