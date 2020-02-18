@@ -73,7 +73,7 @@ router.put('/removeItem/:projectId', async(req,res) => {
         res.sendStatus(400)
     }
 })
-router.put('/removeList/:projectId', (req,res) => {
+router.put('/removeList/:projectId', async(req,res) => {
     const {projectId} = req.params
     const { column} = req.body
     const query = {_id: projectId}
