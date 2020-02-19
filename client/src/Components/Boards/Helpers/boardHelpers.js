@@ -77,6 +77,11 @@ export const removeItem = async(id, projectId,column,setData,setDisplay) => {
     resetBoard(setData)
     setDisplay(false)
 }
+export const removeList = async(column, projectId, toggle, setData) => {
+    await axios.put(`/api/projects/removeList/${projectId}`, {column: column})
+    resetBoard(setData)
+    toggle()
+}
 export const editItem = async(id, projectId,setDisplay,setData,ref) => {
     if(ref.current.value !== '')
     {

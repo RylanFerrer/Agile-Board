@@ -38,7 +38,7 @@ const Boards = () => {
                 <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData, projectId)}>
                     <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">
                         {(provided, snapshot) => (
-                        <div className = "column__container"  isDragging = {snapshot.isDragging}ref = {provided.innerRef}{...provided.droppableProps}>
+                        <div className = "column__container"  isdragging = {snapshot.isDragging}ref = {provided.innerRef}{...provided.droppableProps}>
                             {data.columnOrder.map((columnId,index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map((taskId) => { return data.tasks[taskId]})
