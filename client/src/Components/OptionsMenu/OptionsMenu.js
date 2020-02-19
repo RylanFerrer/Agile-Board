@@ -1,5 +1,7 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 export default function OptionsMenu(props) {
+    const projectId = useSelector(state => state.projectId)
     const {isOpened} = props
     const displayValue = isOpened ? 'block' : 'none'
     return (
