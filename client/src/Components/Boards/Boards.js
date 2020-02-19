@@ -5,7 +5,8 @@ import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
-import {useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
+import {enterProject} from "../Actions"
 
 
 const Boards = () => {
@@ -13,12 +14,11 @@ const Boards = () => {
     const [projectId, setProjectId] =useState(null)
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
-    const counter = useSelector(state => state.isLoggedIn)
-console.log(counter)
-   
+    const dispatch = useDispatch()
     useEffect(() => {
         const fetchData = async() => {
             const response = await axios.get("/api/projects")
+            dispatch(enterProject(response.data._id))
             setData(response.data)
             setProjectId(response.data._id)
         }
@@ -27,7 +27,7 @@ console.log(counter)
         } catch(e) {
             console.log(e)
         }
-    }, [])
+    }, [dispatch])
     const setModal = (content,column) => {
         setVal({taskItem: content, column: column})
         setTextModalDisplay(!textModalDisplay)
@@ -42,9 +42,9 @@ console.log(counter)
                             {data.columnOrder.map((columnId,index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map((taskId) => { return data.tasks[taskId]})
-                            return <Column  setModal = { setModal}reset = {() => resetBoard(setData)}projectId = {projectId} key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
+                            return <Column  setModal = { setModal}reset = {() => resetBoard(setData)}  key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
                             })}
-                           <Additem list projectId = {projectId} reset = {() => resetBoard(setData)}/>
+                           <Additem list  reset = {() => resetBoard(setData)}/>
                         {provided.placeholder}
                         </div>
                 
