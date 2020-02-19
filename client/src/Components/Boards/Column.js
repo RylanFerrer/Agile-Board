@@ -11,7 +11,7 @@ const Column = (props) => {
         {(provided) => (
         <div className = "column"  ref = {provided.innerRef}  {...provided.draggableProps}>
             <h3  className = "column__text"{...provided.dragHandleProps}>{column.title.toUpperCase()}</h3>
-            <Options  column = {column}/>
+            <Options  reset = {reset}column = {column}/>
             <Droppable className = "test" droppableId ={column.id} type = "task">
                 {(provided) => (
                 <div  className = "task__container" ref = {provided.innerRef}  {...provided.droppableProps}>

@@ -79,10 +79,17 @@ router.put('/removeList/:projectId', async(req,res) => {
     const query = {_id: projectId}
     try {
         currentProject = await Project.findOne(query);
+        const tasks = currentProject.columns[column.id].taskIds;
+        tasks.forEach(task => {
+            if(currentProject.tasks[task])
+            {
+                delete currentProject.tasks[task]
+            }
+        })
+        const newColumnOrder = currentProject.columnOrder.filter(col => col !== column.id)
         delete currentProject.columns[column.id]
-        const newOrderList = currentProject.columnOrder.filter(column => column !== column.id)
-        currentProject.columnOrder = newOrderList
-        await Project.updateOne(query, currentProject)
+        currentProject.columnOrder= newColumnOrder
+      await Project.updateOne(query, currentProject)
         res.sendStatus(200)
     } catch(e) {
         console.log(e)
