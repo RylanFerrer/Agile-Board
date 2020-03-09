@@ -4,3 +4,9 @@ export const enterProject = (id) =>  {
         payload: id
     }
 }
+export const enterUser = (id) => {
+    return {
+        type: "ENTER_USER",
+        payload: id
+    }
+}

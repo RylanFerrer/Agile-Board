@@ -3,14 +3,14 @@ import Board from './Components/Boards/Boards'
 import "./Styles/main.css"
 import {Route, Switch} from 'react-router-dom'
 import Auth from "./Components/Auth/Auth"
+import Login from "./Components/Login/Login"
 function App() {
   return (
     <div className="App">
-      <h1>Jira Board</h1>
       <Switch>
-        <Route  component = {Auth(Board)}/>
+        <Route exact path = "/" component = {Login}/>
+        <Auth component = {Board} path = "/project" />
       </Switch>
-      <Board/>
     </div>
   );
 }
