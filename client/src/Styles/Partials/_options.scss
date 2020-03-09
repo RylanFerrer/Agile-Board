@@ -7,6 +7,7 @@
         cursor: pointer;
     }
     &__menu {
+        transition: all .25s cubic-bezier(.5,1.8,.9,.8);
         text-align: center;
         width: 200px;
         position: absolute;
@@ -23,6 +24,7 @@
         }
         &-item {
             text-align: left;
+            cursor:pointer;
             margin: 0 0 15px 0;
             padding: 5px;
             &:hover {

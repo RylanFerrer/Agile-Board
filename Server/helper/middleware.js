@@ -4,14 +4,15 @@ const secret ="thisismysecretn";
 const withAuth = (req,res,next) => {
     const token = req.cookies.token;
     if(!token) {
-        res.status(401).send('Unauthorized: no token provided'); 
+        res.status(400).send('Unauthorized: no token provided'); 
     } else {
         jwt.verify(token,secret,(err,decoded) => {
             if(err) {
-                res.status(401).send('Unauthorized: Invalid token');
+                res.status(400).send('Unauthorized: Invalid token');
             } else {
                 req.email = decoded.email;
-                req.id = decoded.id;
+                req.id = decoded.user;
+                console.log(req.id)
                 next();
             }
         })
