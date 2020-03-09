@@ -8,13 +8,13 @@ import Column from './Column';
 import {useDispatch} from 'react-redux'
 import {enterProject} from "../Actions"
 
-
 const Boards = () => {
     const [data, setData] = useState(null);
     const [projectId, setProjectId] =useState(null)
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
     const dispatch = useDispatch()
+
     useEffect(() => {
         const fetchData = async() => {
             const response = await axios.get("/api/projects")
