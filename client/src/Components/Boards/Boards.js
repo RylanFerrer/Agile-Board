@@ -5,14 +5,14 @@ import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {enterProject} from "../Actions"
-
 const Boards = () => {
     const [data, setData] = useState(null);
     const [projectId, setProjectId] =useState(null)
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
+    const userInfo = useSelector(state => state.userInfo)
     const dispatch = useDispatch()
 
     useEffect(() => {

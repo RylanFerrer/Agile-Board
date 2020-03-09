@@ -59,7 +59,7 @@ router.get('/checkToken', withAuth , (req,res) => {
  })
  router.post('/register', async(req,res) => {
      const {email,password,name} = req.body
-
+    console.log(req.body)
      let checkEmail = await User.findOne({email: email})
      if(checkEmail) {
          res.sendStatus(204).json({
