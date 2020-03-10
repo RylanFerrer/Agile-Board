@@ -54,7 +54,7 @@ The Agile Board Project is my take on a classic Agile/Jira board. The reason I t
 
 
 <!--Project Roadmap -->
-## project map
+## Project Map
 
 
 ### What is currently being developed
