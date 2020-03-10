@@ -78,8 +78,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 
-Project Link: [https://github.com/RylanFerrer/Verdrobe](https://github.com/RylanFerrer/Verdrobe)
-Blog Post: [https://blog.brainstation.io/brainstation-graduate-showcase-fall-2019/](https://blog.brainstation.io/brainstation-graduate-showcase-fall-2019/)
+LinkedIn: [https://www.linkedin.com/in/rylan-ferrer-13b772178/](https://github.com/RylanFerrer/Verdrobe)
 
 
 
