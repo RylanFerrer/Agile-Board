@@ -42,7 +42,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 The Agile Board Project is my take on a classic Agile/Jira board. The reason I took on this project is because almost all companies have some form of a ticket/bug handling software. I wanted to create my own to show my understanding of these kind of products.
-[![Product Name Screen Shot][product-screenshot]](client\src\Assets\Images\jira.JPG)
+[![Product Name Screen Shot][product-screenshot]]()
 
 ### Built With
 
@@ -121,4 +121,4 @@ LinkedIn: [https://www.linkedin.com/in/rylan-ferrer-13b772178/](https://github.c
 [license-shield]: https://img.shields.io/github/license/RylanFerrer/Verdrobe
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/rylan-ferrer-13b772178/
-[product-screenshot]: https://res.cloudinary.com/rylanf/image/upload/v1578696951/aaaa_uggu63.png
+[product-screenshot]: client\src\Assets\Images\jira.JPG
