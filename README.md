@@ -121,4 +121,4 @@ LinkedIn: [https://www.linkedin.com/in/rylan-ferrer-13b772178/](https://github.c
 [license-shield]: https://img.shields.io/github/license/RylanFerrer/Verdrobe
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/rylan-ferrer-13b772178/
-[product-screenshot]: ./client/src/Assets/Images/Jira.JPG
+[product-screenshot]: https://res.cloudinary.com/rylanf/image/upload/v1583799270/jira_wkc5wd.jpg
