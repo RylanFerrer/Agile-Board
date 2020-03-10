@@ -42,6 +42,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 The Agile Board Project is my take on a classic Agile/Jira board. The reason I took on this project is because almost all companies have some form of a ticket/bug handling software. I wanted to create my own to show my understanding of these kind of products.
+[![Product Name Screen Shot][product-screenshot]](client\src\Assets\Images\jira.JPG)
 
 ### Built With
 
