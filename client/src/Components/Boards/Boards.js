@@ -1,12 +1,13 @@
 import React, {useState,useEffect} from 'react';
-import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
+import {useDispatch} from 'react-redux'
+import {enterProject} from "../Actions"
+import axios from 'axios'
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
-import {useDispatch} from 'react-redux'
-import {enterProject} from "../Actions"
+
 const Boards = () => {
     const [data, setData] = useState(null);
     const [projectId, setProjectId] =useState(null)
@@ -46,9 +47,7 @@ const Boards = () => {
                            <Additem list  reset = {() => resetBoard(setData)}/>
                         {provided.placeholder}
                         </div>
-                
-                        )}
-                            
+                        )}     
                     </Droppable>
                 </DragDropContext>
                 <TextModal reset = {setData} projectId = {projectId} setTextModalDisplay = {setTextModalDisplay} textModal = {textModalDisplay} val = {val}/>

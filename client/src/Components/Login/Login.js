@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {enterUser} from "../Actions"
 export default function Login() {
     const [redirect, setRedirect] = useState(false)
+    const dispatch = useDispatch()
     const submitHandler = async(event) => {
         event.preventDefault()
         const {user,password} = event.target
@@ -12,6 +15,7 @@ export default function Login() {
         }
        const res =  await axios.post(`/api/auth/login`, data)
        if(res.status === 200) {
+            dispatch(enterUser(res.data))
             setRedirect(true) 
        }
         else {
@@ -19,9 +23,9 @@ export default function Login() {
         }
     }
     if(redirect === true) {
-        return <Redirect to = "/project"/>
+        return <Redirect to = "/dashboard"/>
     }
-    return (
+    return  (
         <div>
             <h1>Login</h1>
             <form onSubmit = {event => submitHandler(event)}>
