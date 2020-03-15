@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import "./Partials/variables";
+@import "./Partials/breakpoints";
 @import "./Partials/scrollbar";
 @import "./Partials/tasks";
 @import "./Partials/column";
 @import "./Partials/modal";
 @import "./Partials/options";
 @import "./Partials/dashboard";
+
 html {
     position: relative;
 }
