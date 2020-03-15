@@ -23,7 +23,7 @@ export default function Login() {
         }
     }
     if(redirect === true) {
-        return <Redirect to = "/dashboard"/>
+        return <Redirect to = "/"/>
     }
     return  (
         <div>

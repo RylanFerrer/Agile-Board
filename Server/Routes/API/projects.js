@@ -1,11 +1,12 @@
 const express = require('express')
 const Project = require('../../Models/ProjectSchema')
+const User = require('../../Models/UserSchema')
+const uuid = require('uuid')
 const router = express.Router();
 
 router.get('/:projectId', async(req,res) => {
     const {projectId} = req.params
     try {
-        console.log(projectId)
         const proj = await Project.findOne({_id: projectId })
         res.send(proj)
     } catch (e) {
@@ -13,6 +14,50 @@ router.get('/:projectId', async(req,res) => {
         res.sendStatus(400)
     }
  
+})
+router.post('/create/:user',async(req,res) =>{
+    try {
+        const {name} = req.body;
+        const {user} = req.params
+        const query = {_id: user}
+        const newProject = new Project ({
+            users: [],
+            projectName : name,
+            columnOrder:[
+                "column-1", 
+                "column-2", 
+                "column-3"
+            ],
+            tasks: {},
+            columns: {
+                "column-1" : {
+                    "id" : "column-1",
+                    "title" : "to-do",
+                    "taskIds" : []
+                },
+                "column-2" : {
+                    "id" : "column-2",
+                    "title" : "In Progress",
+                    "taskIds" : []
+                },
+                "column-3" : {
+                    "id" : "column-3",
+                    "title" : "Completed",
+                    "taskIds" : []
+                },
+            },
+        })
+        const result = await User.findOne(query);
+        result.Projects.push(newProject._id);
+        await result.save()
+        await newProject.save()
+        res.send(result).status(200)
+
+    } catch (e) {
+        res.sendStatus(400)
+        console.log(e)
+    }
+
 })
 router.put('/:projectId',async(req,res) => {
     const {projectId} = req.params;

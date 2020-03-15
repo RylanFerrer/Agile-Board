@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path = "/" component = {Login}/>
+        <Route exact path = "/login" component = {Login}/>
         <Auth component = {Board} path = "/project/:id/:name" />
-        <Auth component = {Dashboard} path = "/dashboard"/>
+        <Auth component = {Dashboard} path = "/"/>
       </Switch>
     </div>
   );

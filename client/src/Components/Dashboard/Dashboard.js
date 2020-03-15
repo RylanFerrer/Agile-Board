@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import DashboardCard from './DashboardCard'
+import DashboardCreate from './DashboardCreate'
 export default function Dashboard() {
     const [projects, setProjects] = useState(undefined);
     const userInfo =  useSelector(state => state.userInfo);
@@ -26,9 +27,7 @@ export default function Dashboard() {
                 {projects.map((project,key) => {
                     return <DashboardCard project = {project} key = {key}/>
                 })}
-                <div className = "dashboard__card  dashboard__card--create">
-                    <h1 className = "dashboard__card-title">Create New Board</h1>
-                </div>
+               <DashboardCreate/>
             </div>
            
         </div>
