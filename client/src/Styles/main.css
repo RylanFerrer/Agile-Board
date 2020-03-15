@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+/* media query for tablet */
+/* media query for landscape, medium pixel density desktops */
+/* media query for high pixel density desktops */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
@@ -297,6 +300,72 @@
 
 .options__menu-item:hover {
   background-color: #e0e0e0;
+}
+
+.dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f9f9f9;
+}
+
+.dashboard__card {
+  background-color: white;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 140px;
+  height: 100px;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dashboard__card:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dashboard__card-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.dashboard__card--create {
+  background-color: rgba(9, 30, 66, 0.04);
+}
+
+.dashboard__card-title {
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .dashboard {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 0 5%;
+  }
+  .dashboard__card {
+    width: 180px;
+    margin-right: 20px;
+  }
+  .dashboard__card-container {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
 }
 
 html {

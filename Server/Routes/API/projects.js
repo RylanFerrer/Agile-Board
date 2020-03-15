@@ -2,9 +2,11 @@ const express = require('express')
 const Project = require('../../Models/ProjectSchema')
 const router = express.Router();
 
-router.get('/', async(req,res) => {
+router.get('/:projectId', async(req,res) => {
+    const {projectId} = req.params
     try {
-        const proj = await Project.findOne({})
+        console.log(projectId)
+        const proj = await Project.findOne({_id: projectId })
         res.send(proj)
     } catch (e) {
         console.log(e)

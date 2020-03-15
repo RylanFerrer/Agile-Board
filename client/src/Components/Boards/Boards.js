@@ -1,32 +1,30 @@
 import React, {useState,useEffect} from 'react';
-import axios from 'axios'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
+import {useSelector} from 'react-redux'
+import axios from 'axios'
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
-import {useDispatch} from 'react-redux'
-import {enterProject} from "../Actions"
-const Boards = () => {
+
+const Boards = (props) => {
+    const {id} = props.match.params
+    console.log(id)
     const [data, setData] = useState(null);
-    const [projectId, setProjectId] =useState(null)
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
-    const dispatch = useDispatch()
-
+    const projectId = useSelector(state => state.currentProject)
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get("/api/projects")
-            dispatch(enterProject(response.data._id))
+            const response = await axios.get(`/api/projects/${id}`)
             setData(response.data)
-            setProjectId(response.data._id)
         }
         try {
         fetchData()
         } catch(e) {
             console.log(e)
         }
-    }, [dispatch])
+    }, [id])
     const setModal = (content,column) => {
         setVal({taskItem: content, column: column})
         setTextModalDisplay(!textModalDisplay)
@@ -46,9 +44,7 @@ const Boards = () => {
                            <Additem list  reset = {() => resetBoard(setData)}/>
                         {provided.placeholder}
                         </div>
-                
-                        )}
-                            
+                        )}     
                     </Droppable>
                 </DragDropContext>
                 <TextModal reset = {setData} projectId = {projectId} setTextModalDisplay = {setTextModalDisplay} textModal = {textModalDisplay} val = {val}/>

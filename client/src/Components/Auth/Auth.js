@@ -11,17 +11,16 @@ export default function Auth({ component: Component, path}) {
   const [redirect, setRedirect] = useState(false)
   const [loading,setLoading] = useState(true)
   const dispatch = useDispatch()
-  useEffect(() => {
+  useEffect(
+    () => {
     let isSubscribed = true
       const fetchData = async() => {
         if(isSubscribed) {
         try {
           const res = await axios.get('/api/auth/checkToken')
-  
-
           if (res.status === 200) {
+            dispatch(enterUser(res.data.userInfo))
             setLoading(false)
-            await dispatch(enterUser(res.data.userInfo))
           } else {
             const error = new Error(res.error);
             throw error;
@@ -33,7 +32,7 @@ export default function Auth({ component: Component, path}) {
         }
       }
       }
-      fetchData()
+       fetchData()
       return () => isSubscribed = false
   }, [setRedirect, redirect])
   if(loading === true) {
