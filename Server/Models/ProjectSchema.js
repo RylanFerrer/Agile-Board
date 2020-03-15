@@ -3,7 +3,8 @@ const ProjectSchema = {
     users: Array,
     tasks: Object,
     columns: Object,
-    columnOrder: Array
+    columnOrder: Array,
+    projectName: String
 }
 
 module.exports = mongoose.model("Project",ProjectSchema)

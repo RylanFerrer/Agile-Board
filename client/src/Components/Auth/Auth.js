@@ -39,7 +39,7 @@ export default function Auth({ component: Component, path}) {
     return <div></div>
   }  
   if (redirect === true) {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
   return (
     <Route path = {path} component = {Component}/>

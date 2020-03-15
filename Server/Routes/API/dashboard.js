@@ -15,8 +15,10 @@ router.get('/:userId', (req,res) => {
 
 router.post('/getProjects', async(req,res) => {
     const allUserProjects = req.body.data
+    console.log(allUserProjects)
     try {
         const allProjectInfo = await Projects.find({'_id': {$in: allUserProjects}})
+        
         res.send(allProjectInfo).status(200)
     } catch (e) {
         console.log(e)
