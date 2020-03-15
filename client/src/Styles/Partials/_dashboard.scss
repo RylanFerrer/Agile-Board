@@ -11,6 +11,7 @@
         height: 100px;
         border-radius: 4px;
         padding: 10px;
+        margin-top: 2%;
         cursor: pointer;
         &:hover {
             background-color: rgba(0,0,0,0.2);
@@ -19,6 +20,7 @@
             width: 100%;
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap;
         }
         &--create {
             background-color: rgba(9,30,66,0.04);

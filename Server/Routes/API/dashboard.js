@@ -15,7 +15,6 @@ router.get('/:userId', (req,res) => {
 
 router.post('/getProjects', async(req,res) => {
     const allUserProjects = req.body.data
-    console.log(allUserProjects)
     try {
         const allProjectInfo = await Projects.find({'_id': {$in: allUserProjects}})
         

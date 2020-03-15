@@ -74,12 +74,12 @@ export const removeItem = async(id, projectId,column,setData,setDisplay) => {
         column: column
     }
     await axios.put(`/api/projects/removeItem/${projectId}`, data)
-    resetBoard(setData)
+    resetBoard(setData, projectId)
     setDisplay(false)
 }
 export const removeList = async(column, projectId, toggle, setData) => {
     await axios.put(`/api/projects/removeList/${projectId}`, {column: column})
-    resetBoard(setData)
+    resetBoard(setData, projectId)
     toggle()
 }
 export const editItem = async(id, projectId,setDisplay,setData,ref) => {
@@ -91,7 +91,7 @@ export const editItem = async(id, projectId,setDisplay,setData,ref) => {
         }
             await axios.put(`/api/projects/editItem/${projectId}`,data )
             ref.current.value = ''
-            resetBoard(setData)
+            resetBoard(setData, projectId)
     
     } 
     setDisplay(false)
@@ -121,8 +121,8 @@ const updateBoard = async(newData, projectId) => {
     await axios.put(`/api/projects/${projectId}`, {data: newData})
     return
 } 
-export const resetBoard = async(setData) => {
-    const response = await axios.get('/api/projects')
+export const resetBoard = async(setData, projectId) => {
+    const response = await axios.get(`/api/projects/${projectId}`)
     setData(response.data)
     return
 } 

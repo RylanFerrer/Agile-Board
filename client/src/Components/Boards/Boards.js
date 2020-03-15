@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import {onDragEnd, resetBoard} from "./Helpers/boardHelpers"
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {enterProject} from "../Actions"
 import axios from 'axios'
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
@@ -9,7 +10,7 @@ import Column from './Column';
 
 const Boards = (props) => {
     const {id} = props.match.params
-    console.log(id)
+    const dispatch = useDispatch()
     const [data, setData] = useState(null);
     const [val,setVal] = useState(null)
     const [textModalDisplay, setTextModalDisplay] = useState(false)
@@ -17,6 +18,7 @@ const Boards = (props) => {
     useEffect(() => {
         const fetchData = async() => {
             const response = await axios.get(`/api/projects/${id}`)
+            dispatch(enterProject(id))
             setData(response.data)
         }
         try {
@@ -39,9 +41,9 @@ const Boards = (props) => {
                             {data.columnOrder.map((columnId,index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map((taskId) => { return data.tasks[taskId]})
-                            return <Column  setModal = { setModal}reset = {() => resetBoard(setData)}  key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
+                            return <Column  setModal = { setModal}reset = {() => resetBoard(setData,projectId)}  key = {column.id}  index = {index} column = {column} tasks = {tasks}/>
                             })}
-                           <Additem list  reset = {() => resetBoard(setData)}/>
+                           <Additem list  reset = {() => resetBoard(setData,projectId)}/>
                         {provided.placeholder}
                         </div>
                         )}     
