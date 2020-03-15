@@ -8,6 +8,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &__close {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        cursor: pointer;
+        z-index: 5;
+    }
+    &__create {
+        &-button {
+            margin: 8px 0;
+            width: 105px;
+            border: none;
+            border-radius: 2px;
+            padding: 6px 12px;
+            transition: 0.3s;
+        }
+        &-box {
+            width: 296px;
+            height: 100px;
+            background-color: white;
+            border-radius: 4px;     
+        }
+        &-input {
+            margin-top: 5%;
+            text-indent: 2%;
+            width: 80%;
+            height: 30px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    }
     &__content {
         display: flex;
         align-items: flex-start;

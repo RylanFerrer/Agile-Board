@@ -19,7 +19,8 @@ export default function Auth({ component: Component, path}) {
         try {
           const res = await axios.get('/api/auth/checkToken')
           if (res.status === 200) {
-            dispatch(enterUser(res.data.userInfo))
+            const updated = await axios.get(`/api/auth/user/${res.data.userInfo._id}`)
+            dispatch(enterUser(updated.data))
             setLoading(false)
           } else {
             const error = new Error(res.error);

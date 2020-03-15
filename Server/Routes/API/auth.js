@@ -12,6 +12,16 @@ router.get('/checkToken', withAuth , (req,res) => {
      res.clearCookie('token');
      return res.status(200).redirect('/');
  })
+ router.get('/user/:id', async(req,res) => {
+     const {id} = req.params
+     try {
+        const result = await User.findOne({_id: id})
+        res.send(result)
+     } catch (e){
+         res.sendStatus(400)
+        console.log(e)
+     }
+ })
  router.post('/login', async(req,res) => {
     const {email,password} = req.body;
     User.findOne({email}, (err,user) => {
