@@ -10,3 +10,9 @@ export const enterUser = (id) => {
         payload: id
     }
 }
+export const enterAllProjects = (id) => {
+    return  {
+        type: 'ENTER_ALLPROJECTS', 
+        payload: id
+    }
+}

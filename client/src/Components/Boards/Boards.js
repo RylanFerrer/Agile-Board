@@ -27,7 +27,7 @@ const Boards = (props) => {
         } catch(e) {
             console.log(e)
         }
-    }, [id])
+    }, [id, dispatch])
     const setModal = (content,column) => {
         setVal({taskItem: content, column: column})
         setTextModalDisplay(!textModalDisplay)

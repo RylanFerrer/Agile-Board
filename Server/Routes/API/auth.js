@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const secret ="thisismysecretn";
 
 router.get('/checkToken', withAuth , (req,res) => {
-    return  res.json({userInfo: req.id}).status(200);
+    return  res.json({id: req.id}).status(200);
  });
  router.get('/logout', (req,res) => {
      res.clearCookie('token');
@@ -55,7 +55,7 @@ router.get('/checkToken', withAuth , (req,res) => {
                     console.log('success')
                     const payload = {
                         email: email,
-                        user: user};
+                        id: user._id};
                     const token = jwt.sign(payload, secret, {
                         expiresIn: '1h' 
                     });

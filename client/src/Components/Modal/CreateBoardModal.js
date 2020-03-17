@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {enterUser} from "../Actions"
+import {enterUser, enterAllProjects} from "../Actions"
 import OutsideClickHandler from 'react-outside-click-handler';
 import axios from 'axios'
 import close from "../../Assets/Images/close.svg"
@@ -23,7 +23,9 @@ export default function CreateBoardModal(props) {
     const createBoard = async(text) => {
         try {
             const results = await axios.post(`/api/projects/create/${userInfo._id}`, {name: text})
+            const boardResults = await axios.post(`/api/dashboard/getProjects`, {data: results.data.Projects})
             console.log(results.data)
+            dispatch(enterAllProjects(boardResults.data))
             dispatch(enterUser(results.data))
             setModal()
         } catch(e) {

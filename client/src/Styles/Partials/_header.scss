@@ -1,9 +1,46 @@
 .header {
     background-color: #DE8F6E;
     padding: 2px 5%;
+    margin-bottom: 30px;
+    &__popup {
+        transition: 1s;
+        max-height: 60vh;
+        overflow-x: hidden;
+        padding: 8px;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: $boxShadow;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 4px;
+        z-index: 999;
+        &-input {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        &-card {
+            margin: 15px 0 ;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: $boxShadow;
+            padding: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba(0,0,0,0.1);
+            }
+            &-title {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
     &__nav {
         height: 100%;
         &-menu {
+            &-container {
+                position: relative;
+            }
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -11,12 +48,15 @@
             align-items: center;
             height: 100%;
             &-link {
+                position: relative;
                 &-icon {
                     width: 25px;
+                    margin: 0 5px;
                     background-color: rgba(256,256,256,0.5);
                     padding: 8%;
                     border-radius: 4px;
                     transition: 0.3s;
+                    cursor: pointer;
                     &:hover {
                         background-color: white;
                     }

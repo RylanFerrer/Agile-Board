@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom';
 import {Route} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {enterUser} from "../Actions"
+import {enterUser, enterAllProjects} from "../Actions"
 
 
 export default function Auth({ component: Component, path}) {
@@ -19,7 +19,9 @@ export default function Auth({ component: Component, path}) {
         try {
           const res = await axios.get('/api/auth/checkToken')
           if (res.status === 200) {
-            const updated = await axios.get(`/api/auth/user/${res.data.userInfo._id}`)
+            const updated = await axios.get(`/api/auth/user/${res.data.id}`)
+            const response = await axios.post(`/api/dashboard/getProjects`, {data: updated.data.Projects})
+            dispatch(enterAllProjects(response.data))
             dispatch(enterUser(updated.data))
             setLoading(false)
           } else {
