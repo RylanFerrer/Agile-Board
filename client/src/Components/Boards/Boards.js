@@ -7,6 +7,7 @@ import axios from 'axios'
 import  TextModal from "../Modal/TextModal"
 import Additem from "./AddItem"
 import Column from './Column';
+import Header from '../Header/Header'
 
 const Boards = (props) => {
     const {id} = props.match.params
@@ -33,6 +34,7 @@ const Boards = (props) => {
     }
         return data  ? (
             <>
+                <Header/>
                 <div className = "flex-container">
                 <DragDropContext onDragEnd = {result => onDragEnd(result,data,setData, projectId)}>
                     <Droppable droppableId = "all-columns" direction = "horizontal" type = "column">

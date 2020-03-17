@@ -1,0 +1,30 @@
+.header {
+    background-color: #DE8F6E;
+    padding: 2px 5%;
+    &__nav {
+        height: 100%;
+        &-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            &-link {
+                &-icon {
+                    width: 25px;
+                    background-color: rgba(256,256,256,0.5);
+                    padding: 8%;
+                    border-radius: 4px;
+                    transition: 0.3s;
+                    &:hover {
+                        background-color: white;
+                    }
+                }
+                margin: 0;
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+}

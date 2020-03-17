@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import DashboardCard from './DashboardCard'
 import DashboardCreate from './DashboardCreate'
 import CreateBoardModal from '../Modal/CreateBoardModal'
+import Header from "../Header/Header"
 import axios from 'axios'
 export default function Dashboard() {
     const [projects, setProjects] = useState(undefined);
@@ -24,6 +25,7 @@ export default function Dashboard() {
     },[userInfo])
     return projects !== undefined ?  (
         <>
+        <Header/>
         <div className = "dashboard">
             <h3>My Boards</h3>
             <div className = "dashboard__card-container">
